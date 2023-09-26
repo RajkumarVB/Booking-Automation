@@ -96,6 +96,7 @@ def execute_script(panel_name,sheet_no):
     #return jsonify("status_code: 200")
 
 def history(panel_name,sheet_no):
+    global data
     if len(data)> 10:
        data.pop(1)   
     currentData = {}
