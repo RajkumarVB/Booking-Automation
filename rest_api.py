@@ -2,8 +2,10 @@ from openpyxl import Workbook,load_workbook
 import pandas as pd
 import json
 import os
-from flask import Flask, jsonify, request
-  
+from datetime import datetime
+from flask import Flask, jsonify, request, Response
+
+data = []  
 app = Flask(__name__)
 
 def tatkalsheetFinder(panel_name):
@@ -75,7 +77,7 @@ def getTirupatiDetails(panel_name):
 def execute_script(panel_name,sheet_no):
     match panel_name:
         case "tatkal":
-            os.system(f"python tatkal_automate.py {sheet_no}")
+            os.system(f"python taktal_automate.py {sheet_no}")
         case "seva":
             os.system(f"python seva_automate.py {sheet_no}")
         case "300":
@@ -90,14 +92,22 @@ def execute_script(panel_name,sheet_no):
             os.system(f"python tatkal_food.py {sheet_no}")
         case other:
             print("error: panel not found")
-     #return history(panel_name,sheet_no)
-{
+    return history(panel_name,sheet_no)
+    #return jsonify("status_code: 200")
 
-    "sheet_no":
-    "timestamp":
-}
-# def history(panel_name,sheet_no):
-
+def history(panel_name,sheet_no):
+    if len(data)> 10:
+       data.pop(1)   
+    currentData = {}
+    currentData["panel_name"] = panel_name
+    currentData["sheet_no"] = sheet_no
+    currentData["timestamp"] = str(datetime.now())
+    data.append(currentData)
+    #print(f"Current Data = {currentData}")
+    #print(f"Data = {data}")
+    data = sorted(data, key=lambda x: x["timestamp"], reverse=True)
+    return jsonify(data)  
+                      
 if __name__ == "__main__":
     app.run(debug=True)
 
