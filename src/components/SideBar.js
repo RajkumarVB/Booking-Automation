@@ -41,7 +41,9 @@ const SideBar = (props) => {
                 }))
                 }
             </div>
-            {(menu.toLowerCase() === "Seva Login".toLowerCase() || menu.toLowerCase() === "Credit Card".toLowerCase()) ? (buttonHovered !== 0 && <MainBar key={apiData[buttonHovered]}  data={apiData[buttonHovered]} isDataArray={false}></MainBar>) : ( buttonHovered !== 0 && <MainBar key={apiData[buttonHovered]} data={apiData[("Sheet" + buttonHovered)]} isDataArray={true}></MainBar>)}
+            <div className="main-area">
+                {(menu.toLowerCase() === "Seva Login".toLowerCase() || menu.toLowerCase() === "Credit Card".toLowerCase()) ? (buttonHovered !== 0 && <MainBar key={apiData[buttonHovered]}  data={apiData[buttonHovered]} isDataArray={false}></MainBar>) : ( buttonHovered !== 0 && <MainBar key={apiData[buttonHovered]} data={apiData[("Sheet" + buttonHovered)]} isDataArray={true}></MainBar>)}
+            </div>
             <History className="history" data={history}></History>
 
         </div>

@@ -10,15 +10,17 @@ const MainBar = (props) => {
         setIsDataArray(props.isDataArray);
     }, [props.data, props.isDataArray]);
     return (
-        <div className="main-area">
+        <div>
             {isDataArray && data ? (
                 data.map(person => {
                     return (
-                        Object.entries(person).map(entry => {
-                            return (
-                                <p>{entry[0]} : {entry[1]}</p>
-                            );
-                        })
+                        <div className="individual">
+                            {Object.entries(person).map(entry => {
+                                return (
+                                    <p>{entry[0]} : {entry[1]}</p>
+                                );
+                            })}
+                        </div>
                     );
                 })
             ) : (
