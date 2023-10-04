@@ -1,5 +1,5 @@
 export const TATKAL = "http://127.0.0.1:5000/tatkal";
-export const TATKAL_FOOD = "http://127.0.0.1:5000/tatkal";
+export const TATKAL_FOOD = "http://127.0.0.1:5000/tatkal_food";
 export const CREDIT_CARD = "http://127.0.0.1:5000/tirupati/credit_card";
 export const SEVA = "http://127.0.0.1:5000/tirupati/seva";
 export const ACCOMODATION = "http://127.0.0.1:5000/tirupati/accomodation";
